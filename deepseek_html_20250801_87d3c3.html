@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت لینکدین</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>پروفایل لینکدین من</h1>
+    
+    <div class="profile">
+        <h2 id="name">نام: ...</h2>
+        <p id="headline">عنوان شغلی: ...</p>
+        <button onclick="loadProfile()">بارگذاری پروفایل</button>
+    </div>
+
+    <script>
+        // ذخیره داده در localStorage
+        function saveProfile() {
+            const profile = {
+                name: "محمد محمدی",
+                headline: "توسعه‌دهنده وب"
+            };
+            localStorage.setItem('linkedinProfile', JSON.stringify(profile));
+            alert('پروفایل ذخیره شد!');
+        }
+
+        // نمایش داده از localStorage
+        function loadProfile() {
+            const savedData = localStorage.getItem('linkedinProfile');
+            if (savedData) {
+                const profile = JSON.parse(savedData);
+                document.getElementById('name').textContent = `نام: ${profile.name}`;
+                document.getElementById('headline').textContent = `عنوان شغلی: ${profile.headline}`;
+            } else {
+                alert('پروفایلی یافت نشد!');
+            }
+        }
+    </script>
+</body>
+</html>
